@@ -1,0 +1,4 @@
+.idea
+/env
+dockerfiles
+app/static/

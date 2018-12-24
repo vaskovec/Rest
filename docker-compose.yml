@@ -1,0 +1,20 @@
+version: "2"
+services:
+  web:
+    build: ./web
+    volumes:
+      - ./web:/www
+    depends_on:
+      - postgres
+    command: bash start.sh
+    env_file: .env
+    links:
+      - postgres:postgres
+
+  postgres:
+    image: postgres:9.5
+    volumes:
+      - ./dockerfiles/pgdata:/var/lib/postgresql/data/pgdata
+    ports:
+      - "5432:5432"
+    env_file: .env
