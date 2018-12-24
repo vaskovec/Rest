@@ -1,13 +1,15 @@
 version: "2"
 services:
   web:
-    build: ./web
+    build: ./app
     volumes:
-      - ./web:/www
+      - ./app:/www
     depends_on:
       - postgres
     command: bash start.sh
     env_file: .env
+    ports:
+      - "8000:8000"
     links:
       - postgres:postgres
 
