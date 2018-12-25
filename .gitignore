@@ -3,3 +3,4 @@
 dockerfiles
 app/static/
 .vscode
+__pycache__/

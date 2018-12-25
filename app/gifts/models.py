@@ -20,12 +20,20 @@ class GiftRequest(models.Model):
         Gift, 
         on_delete=models.CASCADE
     )
-    santa = models.ForeignKey(
-        User, 
-        null=True, 
-        on_delete=models.SET_NULL,
-        related_name='gifts'
-    )
 
     def __str__(self):
         return f'{self.user}: {self.gift.name}'
+
+
+class GiftApprove(models.Model):
+    user = models.ForeignKey(
+        User, 
+        on_delete=models.CASCADE,
+        related_name='gifts'
+    )
+    gift_request = models.ForeignKey(
+        GiftRequest,
+        on_delete=models.CASCADE,
+        related_name='approves',
+    )
+    comment = models.CharField(max_length=64)
